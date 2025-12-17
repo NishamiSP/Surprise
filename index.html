@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Special Dinner Invitation 💖</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card {
+      background: white;
+      padding: 40px;
+      border-radius: 16px;
+      max-width: 420px;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+
+    h1 {
+      margin-bottom: 10px;
+      color: #e63946;
+    }
+
+    p {
+      font-size: 16px;
+      color: #444;
+      line-height: 1.6;
+    }
+
+    .date {
+      margin: 20px 0;
+      font-weight: bold;
+      font-size: 18px;
+      color: #1d3557;
+    }
+
+    button {
+      margin-top: 25px;
+      padding: 12px 24px;
+      font-size: 16px;
+      border: none;
+      border-radius: 25px;
+      background: #e63946;
+      color: white;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .surprise {
+      margin-top: 25px;
+      font-size: 18px;
+      color: #2a9d8f;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>Hey Love ❤️</h1>
+    <p>
+      Before your birthday arrives, I have something special planned just for you.
+    </p>
+
+    <div class="date">🍽️ Pre‑Birthday Dinner</div>
+    <p>
+      Dress nice, bring your smile, and trust me for the rest.
+    </p>
+
+    <button onclick="revealSurprise()">Tap for the surprise ✨</button>
+
+    <div id="surprise" class="surprise hidden">
+      📍 Date & Place will be revealed tonight 😉<br />
+      I love you endlessly 💕
+    </div>
+  </div>
+
+  <script>
+    function revealSurprise() {
+      document.getElementById('surprise').classList.remove('hidden');
+    }
+  </script>
+
+</body>
+</html>

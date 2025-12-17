@@ -13,15 +13,18 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      overflow: hidden;
     }
 
     .card {
       background: white;
       padding: 40px;
       border-radius: 16px;
-      max-width: 420px;
+      max-width: 440px;
       text-align: center;
       box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+      position: relative;
+      z-index: 2;
     }
 
     h1 {
@@ -35,16 +38,16 @@
       line-height: 1.6;
     }
 
-    .date {
+    .details {
       margin: 20px 0;
-      font-weight: bold;
-      font-size: 18px;
+      font-size: 16px;
       color: #1d3557;
+      font-weight: 600;
     }
 
     button {
       margin-top: 25px;
-      padding: 12px 24px;
+      padding: 12px 26px;
       font-size: 16px;
       border: none;
       border-radius: 25px;
@@ -63,11 +66,27 @@
       display: none;
     }
 
-    .surprise {
+    .accepted {
       margin-top: 25px;
       font-size: 18px;
       color: #2a9d8f;
       font-weight: bold;
+    }
+
+    /* Confetti */
+    .confetti {
+      position: fixed;
+      width: 8px;
+      height: 8px;
+      top: -10px;
+      animation: fall linear forwards;
+      z-index: 1;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh) rotate(360deg);
+      }
     }
   </style>
 </head>
@@ -76,25 +95,44 @@
   <div class="card">
     <h1>Hey Love ❤️</h1>
     <p>
-      Before your birthday arrives, I have something special planned just for you.
+      Before your birthday arrives, I want to take you somewhere special.
+      Will you accept my invitation for a pre-birthday dinner?
     </p>
 
-    <div class="date">🍽️ Pre‑Birthday Dinner</div>
-    <p>
-      Dress nice, bring your smile, and trust me for the rest.
-    </p>
+    <div class="details">
+      📅 <strong>Date:</strong> 21st December 2025<br />
+      🕡 <strong>Time:</strong> 6:30 PM<br />
+      📍 <strong>Venue:</strong> Beira Kitchen,<br />
+      Courtyard by Marriott Colombo
+    </div>
 
-    <button onclick="revealSurprise()">Tap for the surprise ✨</button>
+    <button id="acceptBtn" onclick="acceptInvite()">Accept My Invitation 💌</button>
 
-    <div id="surprise" class="surprise hidden">
-      📍 Date & Place will be revealed tonight 😉<br />
-      I love you endlessly 💕
+    <div id="accepted" class="accepted hidden">
+      🎉 Yay! It’s a date! 🎉<br />
+      Get ready for good food, laughter, and lots of love 💕
     </div>
   </div>
 
   <script>
-    function revealSurprise() {
-      document.getElementById('surprise').classList.remove('hidden');
+    function acceptInvite() {
+      document.getElementById('accepted').classList.remove('hidden');
+      document.getElementById('acceptBtn').style.display = 'none';
+      launchConfetti();
+    }
+
+    function launchConfetti() {
+      const colors = ['#e63946', '#f1faee', '#a8dadc', '#457b9d', '#ffb703'];
+      for (let i = 0; i < 120; i++) {
+        const confetti = document.createElement('div');
+        confetti.classList.add('confetti');
+        confetti.style.left = Math.random() * 100 + 'vw';
+        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+        document.body.appendChild(confetti);
+
+        setTimeout(() => confetti.remove(), 5000);
+      }
     }
   </script>
 
